@@ -10,12 +10,6 @@
 -- Tool versions:  ISE  P.20131013
 -- Description:
 --
--- 0 : VFAT2 mask for tracking data - 24 bits
--- 1 : VFAT2 T1 selection
--- 2 : VFAT2 reset
--- 3 : referenc clock select
--- 4 : SBit select
---
 ----------------------------------------------------------------------------------
 
 library ieee;
@@ -27,7 +21,7 @@ use work.types_pkg.all;
 
 entity stat is
 generic(
-    N               : integer := 3
+    N               : integer := 4
 );
 port(
 
@@ -99,11 +93,13 @@ begin
     --== Mapping ==--
     --=============--
     
-    reg_data(0) <= x"20160513";
+    reg_data(0) <= x"20161115";
     
     reg_data(1) <= (0 => qpll_locked_i, others => '0');
     
     reg_data(2) <= (0 => qpll_pll_locked_i, others => '0');    
+                    
+    reg_data(3) <= x"0202030B"; -- A for GEB v2a, B for GEB v2b
     
 end Behavioral;
 
